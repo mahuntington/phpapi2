@@ -8,3 +8,12 @@ RewriteCond %{REQUEST_METHOD} ^PUT$
 RewriteRule ^people/([0-9]+)$ controllers/people.php?action=update&id=$1
 RewriteCond %{REQUEST_METHOD} ^DELETE$
 RewriteRule ^people/([0-9]+)$ controllers/people.php?action=delete&id=$1
+
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteRule ^locations$ controllers/locations.php?action=index
+RewriteCond %{REQUEST_METHOD} ^POST$
+RewriteRule ^locations$ controllers/locations.php?action=post
+RewriteCond %{REQUEST_METHOD} ^PUT$
+RewriteRule ^locations/([0-9]+)$ controllers/locations.php?action=update&id=$1
+RewriteCond %{REQUEST_METHOD} ^DELETE$
+RewriteRule ^locations/([0-9]+)$ controllers/locations.php?action=delete&id=$1

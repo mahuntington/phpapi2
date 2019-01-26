@@ -8,9 +8,8 @@ if($_REQUEST['action'] === 'index'){
     $request_body = file_get_contents('php://input');
     $body_object = json_decode($request_body);
     $newPerson = new Person(null, $body_object->name, $body_object->age);
-    $allPeople = People::create($newPerson); //store the return value of People::create into a var
+    $allPeople = People::create($newPerson);
 
-    //send the return value of People::create (all people in the db) back to the user
     echo json_encode($allPeople);
 } else if ($_REQUEST['action'] === 'update'){
     $request_body = file_get_contents('php://input');

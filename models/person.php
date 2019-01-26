@@ -16,7 +16,7 @@ class People {
         $query = "INSERT INTO people (name, age) VALUES ($1, $2)";
         $query_params = array($person->name, $person->age);
         pg_query_params($query, $query_params);
-        return self::all(); //find all people and return them
+        return self::all();
     }
     static function delete($id){
         $query = "DELETE FROM people WHERE id = $1";
@@ -33,10 +33,8 @@ class People {
         return self::all();
     }
     static function all(){
-        //create an empty array
         $people = array();
 
-        //query the database
         $results = pg_query("SELECT * FROM people");
 
         $row_object = pg_fetch_object($results);
@@ -47,7 +45,7 @@ class People {
                 $row_object->name,
                 intval($row_object->age)
             );
-            $people[] = $new_person; //push new person object onto $people array
+            $people[] = $new_person;
 
             $row_object = pg_fetch_object($results);
         }
