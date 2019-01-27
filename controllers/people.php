@@ -7,20 +7,20 @@ if($_REQUEST['action'] === 'index'){
 } else if ($_REQUEST['action'] === 'post'){
     $request_body = file_get_contents('php://input');
     $body_object = json_decode($request_body);
-    $newPerson = new Person(null, $body_object->name, $body_object->age);
-    $allPeople = People::create($newPerson);
+    $new_person = new Person(null, $body_object->name, $body_object->age);
+    $all_people = People::create($new_person);
 
-    echo json_encode($allPeople);
+    echo json_encode($all_people);
 } else if ($_REQUEST['action'] === 'update'){
     $request_body = file_get_contents('php://input');
     $body_object = json_decode($request_body);
-    $updatedPerson = new Person($_REQUEST['id'], $body_object->name, $body_object->age);
-    $allPeople = People::update($updatedPerson);
+    $updated_person = new Person($_REQUEST['id'], $body_object->name, $body_object->age);
+    $all_people = People::update($updated_person);
 
-    echo json_encode($allPeople);
+    echo json_encode($all_people);
 } else if ($_REQUEST['action'] === 'delete'){
-    $allPeople = People::delete($_REQUEST['id']);
-    echo json_encode($allPeople);
+    $all_people = People::delete($_REQUEST['id']);
+    echo json_encode($all_people);
 }
 
 ?>

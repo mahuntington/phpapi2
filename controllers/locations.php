@@ -7,20 +7,20 @@ if($_REQUEST['action'] === 'index'){
 } else if ($_REQUEST['action'] === 'post'){
     $request_body = file_get_contents('php://input');
     $body_object = json_decode($request_body);
-    $newLocation = new Location(null, $body_object->street, $body_object->city, $body_object->state);
-    $allLocations = Locations::create($newLocation);
+    $new_location = new Location(null, $body_object->street, $body_object->city, $body_object->state);
+    $all_locations = Locations::create($new_location);
 
-    echo json_encode($allLocations);
+    echo json_encode($all_locations);
 } else if ($_REQUEST['action'] === 'update'){
     $request_body = file_get_contents('php://input');
     $body_object = json_decode($request_body);
-    $updatedLocation = new Location($_REQUEST['id'], $body_object->street, $body_object->city, $body_object->state);
-    $allLocations = Locations::update($updatedLocation);
+    $updated_location = new Location($_REQUEST['id'], $body_object->street, $body_object->city, $body_object->state);
+    $all_locations = Locations::update($updated_location);
 
-    echo json_encode($allLocations);
+    echo json_encode($all_locations);
 } else if ($_REQUEST['action'] === 'delete'){
-    $allLocations = Locations::delete($_REQUEST['id']);
-    echo json_encode($allLocations);
+    $all_locations = Locations::delete($_REQUEST['id']);
+    echo json_encode($all_locations);
 }
 
 ?>
